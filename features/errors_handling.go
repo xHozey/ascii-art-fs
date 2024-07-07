@@ -1,4 +1,4 @@
-package asciiart
+package web
 
 import (
 	"fmt"
@@ -16,6 +16,6 @@ func InvalidInput() {
 }
 
 func InvalidBanner() {
-	fmt.Printf("invalid bannerfile name")
+	fmt.Println("invalid bannerfile name")
 	os.Exit(0)
 }

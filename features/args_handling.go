@@ -1,4 +1,4 @@
-package asciiart
+package web
 
 func BannerInput(args []string) (string, string) {
 	banner := "standard"

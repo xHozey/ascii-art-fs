@@ -1,4 +1,4 @@
-package asciiart
+package web
 
 import (
 	"fmt"
