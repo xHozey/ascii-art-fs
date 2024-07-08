@@ -1,9 +1,10 @@
 package web
 
 import (
-	"fmt"
 	"strings"
 )
+
+var Result string
 
 // Convert content array to a character matrix mapping ASCII characters to their line representations
 func ConvertToCharacterMatrix(content []string) map[rune][]string {
@@ -27,25 +28,26 @@ func checkNewLine(splittedInput []string) bool {
 }
 
 // Render the ASCII art based on the character matrix and the input lines
-func DrawASCIIArt(characterMatrix map[rune][]string, input string) {
+func DrawASCIIArt(characterMatrix map[rune][]string, input string) string {
+	Result := ""
 
 	splittedInput := strings.Split(input, "\\n")
 
 	for i, val := range splittedInput {
 		if val == "" {
 			if checkNewLine(splittedInput) {
-				fmt.Println()
+				Result += "\n"
 			} else if i != 0 && !checkNewLine(splittedInput) {
-				fmt.Println()
+				Result += "\n"
 			}
 		} else if val != "" {
 			for j := 0; j < 8; j++ {
 				for _, k := range val {
-
-					fmt.Print(characterMatrix[k][j])
+					Result += characterMatrix[k][j]
 				}
-				fmt.Println()
+				Result += "\n"
 			}
 		}
 	}
+	return Result
 }

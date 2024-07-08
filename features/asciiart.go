@@ -1,18 +1,33 @@
 package web
 
 import (
-	"os"
+	"fmt"
+	"html/template"
+	"net/http"
 )
 
-func AsciiArt() {
-	args := os.Args[1:]
+var tpl *template.Template
 
-	// Specify the ASCII art banner file to use
-	input, banner := BannerInput(args)
-
+func AsciiArt(w http.ResponseWriter, r *http.Request) {
+	tpl, _ = template.ParseGlob("templates/*.html")
+	banner := r.PostFormValue("banner")
+	fmt.Printf(banner)
+	if banner == "" {
+		banner = "standard"
+		fmt.Println(banner)
+	}
+	input := r.PostFormValue("input")
 	if !CheckValidInput(input) {
 		InvalidInput()
 	}
+
+	// if r.Method == "GET" {
+	// 	tpl.ExecuteTemplate(w, "index.html", nil)
+	// } else if r.Method == "POST" {
+	// 	http.Redirect(w, r, "/ascii-art", 200)
+	// }
+
 	characterMatrix := ReadBanner(banner)
-	DrawASCIIArt(characterMatrix, input)
+	s := DrawASCIIArt(characterMatrix, input)
+	tpl.ExecuteTemplate(w, "index.html", s)
 }
