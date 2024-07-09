@@ -9,10 +9,10 @@ import (
 func CheckValidInput(input string) string {
 	filtredInput := ""
 	for _, char := range input {
-		if int(char) < 32 || int(char) > 126 {
-			continue
-		} else if char == '\r' || char == '\n' {
+		if char == '\r' || char == '\n' {
 			filtredInput += string(char)
+		} else if int(char) < 32 || int(char) > 126 {
+			continue
 		} else {
 			filtredInput += string(char)
 		}
