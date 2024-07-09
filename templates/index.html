@@ -5,38 +5,27 @@
 </head>
 
 <body>
+
+  
+    
     <center>
-
-        <style>
-            .fixed-size {
-              resize: none;
-            }
-          </style>
-          
-          <textarea rows="10" cols="50" class="fixed-size" name="input" placeholder="Type something..."></textarea>
-    </center>
-
-
-<center>
-  <legend><h2>Banner:</h2></legend>
-  <form action="/features/asciiart.go" method="get">
-  <input type="radio"  name="banner" value="standard">
-  <label for="standard">standard</label>
+      <legend><h2>Banner:</h2></legend>
+      <form action="/ascii-art" method="get">
+     
+    <textarea rows="10" cols="50" name="input" placeholder="Type something..."></textarea>
+  <input type="radio"  name="banner" value="standard" checked>
+  <label for="standard">Standard</label>
 
   <input type="radio" name="banner" value="shadow">
-  <label for="shadow">shadow</label>
+  <label for="shadow">Shadow</label>
 
   <input type="radio" name="banner" value="thinkertoy">
-  <label for="thinkertoy">thinkertoy</label>
+  <label for="thinkertoy">Thinkertoy</label>
+  <input type="submit">
   </form>
 </center>
 
-<center>
 
-
-
-  <button><h3>Submit</h3></button> 
-</center>
 
 
 </body>

@@ -8,7 +8,8 @@ import (
 )
 
 func main() {
-	http.HandleFunc("/", ft.AsciiArt)
+	http.HandleFunc("/ascii-art", ft.AsciiArt)
+	http.HandleFunc("/", ft.Index)
 	err := http.ListenAndServe(":8080", nil)
 	if err != nil {
 		fmt.Print(err)

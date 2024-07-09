@@ -6,13 +6,18 @@ import (
 )
 
 // validates if the input contains only printable ASCII characters
-func CheckValidInput(input string) bool {
+func CheckValidInput(input string) string {
+	filtredInput := ""
 	for _, char := range input {
 		if int(char) < 32 || int(char) > 126 {
-			return false
+			continue
+		} else if char == '\r' || char == '\n' {
+			filtredInput += string(char)
+		} else {
+			filtredInput += string(char)
 		}
 	}
-	return true
+	return filtredInput
 }
 
 func ReadBanner(banner string) map[rune][]string {
@@ -20,7 +25,6 @@ func ReadBanner(banner string) map[rune][]string {
 	stringData := string(data)
 	if banner == "thinkertoy" {
 		stringData = strings.ReplaceAll(stringData, "\r", "")
-
 	}
 	content := strings.Split(stringData[1:], "\n\n")
 	characterMatrix := ConvertToCharacterMatrix(content)
