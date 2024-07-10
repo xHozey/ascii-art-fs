@@ -5,11 +5,15 @@ import (
 	"net/http"
 )
 
+func Index(w http.ResponseWriter, r *http.Request) {
+	tpl, _ := template.ParseFiles("templates/index.html")
+
+	tpl.Execute(w, nil)
+}
+
 func AsciiArt(w http.ResponseWriter, r *http.Request) {
-	tpl, err := template.ParseFiles("templates/index1.html")
-	if err != nil {
-		http.Error(w, "hello", 500)
-	}
+	tpl, _ := template.ParseFiles("templates/index1.html")
+
 	r.ParseForm()
 	banner := r.Form.Get("banner")
 	input := r.Form.Get("input")
@@ -20,13 +24,4 @@ func AsciiArt(w http.ResponseWriter, r *http.Request) {
 	s := DrawASCIIArt(characterMatrix, filtredInput)
 
 	tpl.Execute(w, s)
-}
-
-func Index(w http.ResponseWriter, r *http.Request) {
-	tpl, err := template.ParseFiles("templates/index.html")
-	if err != nil {
-		http.Error(w, "hello", 500)
-	}
-
-	tpl.Execute(w, nil)
 }

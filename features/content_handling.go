@@ -1,7 +1,6 @@
 package web
 
 import (
-	"fmt"
 	"strings"
 )
 
@@ -32,8 +31,6 @@ func checkNewLine(splittedInput []string) bool {
 func DrawASCIIArt(characterMatrix map[rune][]string, input string) string {
 	Result := ""
 
-	fmt.Println([]byte(input))
-
 	splittedInput := strings.Split(input, "\r\n")
 
 	for i, val := range splittedInput {
@@ -52,6 +49,5 @@ func DrawASCIIArt(characterMatrix map[rune][]string, input string) string {
 			}
 		}
 	}
-	fmt.Println(Result)
 	return Result
 }
